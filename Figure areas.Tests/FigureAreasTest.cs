@@ -80,5 +80,34 @@ namespace Figure_areas.Tests
         {
             TestCircleArea(0, 0);
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ImpossibleTriangleException()
+        {
+            var triangle = new Triangle(new double[] { 1.0, 2.0, 10.0 });
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void WrongSidesNumberTriangleException()
+        {
+            var triangle = new Triangle(new double[] { 1.0, 2.0, 1.0, 2.0 });
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void NegativeSideTriangleException()
+        {
+            var triangle = new Triangle(new double[] { 1.0, -2.0, 1.0 });
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void NegativeRadiusCircleException()
+        {
+            var triangle = new Circle(-5.5);
+        }
+
     }
 }
