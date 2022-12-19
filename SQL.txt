@@ -1,0 +1,10 @@
+SELECT DISTINCT
+       pr.name AS name_product,
+       c.name AS name_category
+  FROM product pr
+  LEFT JOIN 
+       pairs pa
+    ON pr.product_id = pa.product_id
+  JOIN category c
+    ON c.category_id = pr.category_id
+ ORDER BY name_product
