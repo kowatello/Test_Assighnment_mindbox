@@ -1,14 +1,15 @@
+
 namespace Figure_areas.Tests
 {
     [TestClass]
     public class FigureAreasTest
     {
-        void TestTriangleArea(double[] testSides, double exprxtedArea)
+        void TestTriangleArea(double[] testSides, double expectedArea)
         {
             var triangle = new Triangle(testSides);
             var area = triangle.Area();
 
-            Assert.AreEqual(exprxtedArea, area);
+            Assert.AreEqual(expectedArea, area);
         }
 
         void TestTriangleRightness(double[] testSides, bool expectedRightness)
@@ -16,6 +17,14 @@ namespace Figure_areas.Tests
             var triangle = new Triangle(testSides);
 
             Assert.AreEqual(expectedRightness, triangle.IsRight());
+        }
+
+        void TestCircleArea(double radius, double expectedArea)
+        {
+            var circle = new Circle(radius);
+            var area = circle.Area();
+
+            Assert.AreEqual(expectedArea, area);
         }
 
         [TestMethod]
@@ -57,7 +66,19 @@ namespace Figure_areas.Tests
         [TestMethod]
         public void InLineTriangleRightness()
         {
-            TestTriangleRightness(new double[] { 2.0, 5.0, 3.0 }, true);
+            TestTriangleRightness(new double[] { 2.0, 4.0, 2.0 }, false);
+        }
+
+        [TestMethod]
+        public void OrdinaryCircleArea()
+        {
+            TestCircleArea(1, 3.141592653589793);
+        }
+
+        [TestMethod]
+        public void ZeroCircleArea()
+        {
+            TestCircleArea(0, 0);
         }
     }
 }
